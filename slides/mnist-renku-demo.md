@@ -252,17 +252,17 @@ Train MNIST to 99% accuracy
 
 ---
 
-## Current status
+## Training result
 
-Training image build is running.
+The non-interactive job succeeded.
 
-Next:
+```text
+epoch 1: 0.9852
+epoch 2: 0.9895
+epoch 3: 0.9911
+```
 
-1. run job
-2. inspect logs
-3. check accuracy
-4. iterate if needed
-5. create dashboard launcher
+The job stopped early after reaching the target.
 
 ---
 
@@ -338,7 +338,7 @@ Useful for long-running agent workflows.
 Pi + LLM can orchestrate:
 
 - code creation
-- Renku setup
+- Renku setup via MCP
 - data provenance
 - launchers
 - jobs
