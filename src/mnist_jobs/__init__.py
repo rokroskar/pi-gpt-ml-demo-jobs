@@ -1,0 +1,1 @@
+"""MNIST Renku jobs demo."""
