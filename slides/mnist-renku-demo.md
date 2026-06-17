@@ -146,7 +146,7 @@ src/mnist_jobs/
 └── artifacts.py  # checkpoints
 
 app.py            # Streamlit dashboard
-requirements.txt
+pyproject.toml
 scripts/
 ```
 

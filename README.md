@@ -1,6 +1,6 @@
 # MNIST Non-Interactive ML Jobs Demo
 
-Reusable Renku example showing how to run a non-interactive MNIST training job from a Zenodo data connector and launch a Streamlit inference dashboard.
+Reusable Renku example showing how to run a non-interactive MNIST training job from a Zenodo data connector and launch a Streamlit inference dashboard. Python dependencies are specified in `pyproject.toml` for use with `uv`/standard Python packaging.
 
 ## Data
 
