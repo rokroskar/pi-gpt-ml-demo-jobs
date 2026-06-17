@@ -146,7 +146,7 @@ src/mnist_jobs/
 └── artifacts.py  # checkpoints
 
 app.py            # Streamlit dashboard
-pyproject.toml
+requirements.txt
 scripts/
 ```
 
@@ -315,7 +315,6 @@ Added:
 ```text
 .pi/
 .venv/
-.venv-uv/
 models/
 data/
 ```
