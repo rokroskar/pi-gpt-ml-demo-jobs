@@ -129,10 +129,11 @@ html.dark {
 .sdsc-contact p { margin: 0.12rem 0; font-size: 0.85rem; color: var(--sdsc-text-on-dark-muted); }
 .sdsc-contact .sdsc-contact-name { color: var(--sdsc-text-on-dark); font-weight: 500; }
 .sdsc-partners {
-  position: absolute; bottom: 2rem; left: 3rem;
-  display: flex; align-items: center; gap: 1.8rem;
+  position: absolute; bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; justify-content: center; gap: 2.4rem;
 }
-.sdsc-partners img { height: 1.25rem; }
+.sdsc-partners img { height: 4.1rem; }
 
 /* Section divider — pale lavender panel, big lavender numeral.
    The default theme centres the section slot; left-align it for the SDSC look. */
