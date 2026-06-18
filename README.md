@@ -18,7 +18,7 @@ The code deliberately does **not** download MNIST at runtime. Set `MNIST_DATA_DI
 python -m mnist_jobs.train --data-dir /home/renku/work/mnist-dataset-doi-10.5281-zenodo.10058130 --model-dir /home/renku/work/models --target-accuracy 0.99
 ```
 
-Training stops as soon as test accuracy reaches the target. Artifacts are written to a unique run directory so existing files are never overwritten.
+Training stops as soon as test accuracy reaches the target. Artifacts are written to a unique run directory so existing files are never overwritten. In Renku, the writable Polybox connector is mounted at `/home/renku/work/models` for model artifacts.
 
 ## Dashboard
 
@@ -26,4 +26,4 @@ Training stops as soon as test accuracy reaches the target. Artifacts are writte
 streamlit run app.py --server.address 0.0.0.0 --server.port 8888
 ```
 
-The dashboard loads the best available model from `MODEL_DIR`; if none is found, it can retrain a model using the mounted Zenodo connector data.
+The dashboard loads the best available model from the read-only Polybox mount at `/home/renku/work/models-readonly`, falling back to `/home/renku/work/models`. If none is found, it can retrain using the mounted Zenodo connector data and write to the writable model mount.

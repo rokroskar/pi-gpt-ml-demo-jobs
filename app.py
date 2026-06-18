@@ -18,19 +18,23 @@ st.title("✍️ MNIST Renku Inference Demo")
 st.caption("Uses MNIST mounted from the Zenodo data connector; no runtime data downloads.")
 
 data_dir = Path(os.getenv("MNIST_DATA_DIR", "/home/renku/work/mnist-dataset-doi-10.5281-zenodo.10058130"))
-model_dir = Path(os.getenv("MODEL_DIR", "/home/renku/work/models"))
+# Prefer the public read-only Polybox mount for pre-trained models in the dashboard.
+# Retraining writes to MODEL_WRITE_DIR, normally the writable Polybox mount.
+model_read_dir = Path(os.getenv("MODEL_READ_DIR", "/home/renku/work/models-readonly"))
+model_write_dir = Path(os.getenv("MODEL_WRITE_DIR", os.getenv("MODEL_DIR", "/home/renku/work/models")))
 target = float(os.getenv("TARGET_ACCURACY", "0.99"))
 
 with st.sidebar:
     st.header("Configuration")
     st.write(f"Data: `{data_dir}`")
-    st.write(f"Models: `{model_dir}`")
+    st.write(f"Read models: `{model_read_dir}`")
+    st.write(f"Write models: `{model_write_dir}`")
     st.write(f"Target accuracy: `{target}`")
     retrain = st.button("Retrain model", type="primary")
 
 if retrain:
     with st.status("Training model...", expanded=True) as status:
-        cmd = [sys.executable, "-m", "mnist_jobs.train", "--data-dir", str(data_dir), "--model-dir", str(model_dir), "--target-accuracy", str(target)]
+        cmd = [sys.executable, "-m", "mnist_jobs.train", "--data-dir", str(data_dir), "--model-dir", str(model_write_dir), "--target-accuracy", str(target)]
         st.code(" ".join(cmd))
         proc = subprocess.run(cmd, text=True, capture_output=True)
         st.text(proc.stdout)
@@ -40,7 +44,7 @@ if retrain:
         else:
             status.update(label="Training complete", state="complete")
 
-checkpoint = find_best_checkpoint(model_dir)
+checkpoint = find_best_checkpoint(model_read_dir) or find_best_checkpoint(model_write_dir)
 if checkpoint is None:
     st.warning("No trained model found. Use the sidebar button to train one from the mounted Zenodo connector.")
     st.stop()

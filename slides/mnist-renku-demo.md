@@ -194,7 +194,10 @@ Artifacts go into unique run folders:
 models/mnist-cnn-<timestamp>/
 ```
 
-No overwriting existing model files.
+Model storage uses Polybox:
+
+- writable mount for training
+- read-only mount for dashboard users
 
 ---
 
@@ -203,6 +206,7 @@ No overwriting existing model files.
 Streamlit app for:
 
 - loading best model
+- read-only Polybox model mount
 - showing MNIST samples
 - displaying predictions
 - retraining if model is missing
