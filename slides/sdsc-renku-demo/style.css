@@ -543,3 +543,25 @@ html:not(.dark) .sdsc-footer img.renku-footer-logo {
   height: 1.45rem;
   background: transparent;
 }
+
+/* Compact prompt excerpt card used for agent-generated artifact examples. */
+.prompt-card {
+  margin: 1rem 0 1.1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(85, 97, 166, 0.28);
+  border-left: 0.28rem solid var(--sdsc-primary);
+  border-radius: 0.55rem;
+  background: var(--sdsc-background-alt);
+  color: var(--sdsc-text);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.prompt-card-label {
+  margin-bottom: 0.35rem;
+  color: var(--sdsc-content-heading);
+  font-family: var(--sdsc-font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
