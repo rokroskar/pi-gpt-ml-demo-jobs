@@ -184,6 +184,34 @@ renku_session_logs
 ```
 
 ---
+
+# A second agent loop: improving MCP itself
+
+In parallel, another agent session was building and refining the Renku MCP server.
+
+- test agents exposed where the tools were confusing or incomplete
+- user feedback was reported back to the MCP implementation agent
+- tool docstrings and server instructions were updated with Renku-specific rules
+- API edge cases became better tool behavior and better guidance
+
+<div class="sdsc-takeaway">The MCP server is not static glue code — it improves through real agent failures.</div>
+
+---
+
+# Feedback that changed the tools
+
+Examples from real test-agent runs:
+
+- link connectors atomically when `project_id` is supplied
+- wait for build-from-code environments before launching sessions
+- filter stale hibernated sessions and scope lists by project
+- check logs while waiting for jobs, not only session state
+- use correct session URLs and Streamlit base-path semantics
+- stop running sessions before deleting a project
+
+<div class="renku-callout">This creates a feedback loop: agent struggles → user reports → MCP tools improve → future agents perform better.</div>
+
+---
 layout: section
 ---
 
