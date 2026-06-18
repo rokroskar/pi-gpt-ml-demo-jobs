@@ -242,3 +242,304 @@ html.dark .sdsc-footer .sdsc-logo-dark { display: inline; }
 
 /* Built-in Slidev page number (used on slides without the custom footer). */
 .slidev-page-number { color: var(--sdsc-text-grey); font-family: var(--sdsc-font-body); }
+
+/* --- Renku flair for this co-branded demo deck --------------------------
+   Renku brand cues from the Renku 2.0 identity: primary green #006E58,
+   dark navy #01192D, positive/collaborative tone, and dots + connecting
+   lines representing data, code, compute, environments, sessions, and people.
+   These are used sparingly inside the SDSC slide system. */
+:root {
+  --renku-green: #006E58;
+  --renku-navy: #01192D;
+  --renku-mint: #DDF4EE;
+  --renku-line: rgba(0, 110, 88, 0.35);
+  --renku-pink: #E84A8A;
+  --renku-orange: #F59E0B;
+  --renku-blue: #2563EB;
+}
+
+.renku-slogan {
+  color: var(--renku-green);
+  font-weight: 650;
+}
+
+.renku-chip-row {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.renku-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.32rem 0.68rem;
+  border: 1px solid rgba(0, 110, 88, 0.24);
+  border-radius: 999px;
+  background: var(--renku-mint);
+  color: var(--renku-navy);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.renku-chip::before {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--renku-green);
+}
+
+.renku-chip.code::before { background: var(--renku-blue); }
+.renku-chip.compute::before { background: var(--renku-orange); }
+.renku-chip.people::before { background: var(--renku-pink); }
+
+.renku-network {
+  position: relative;
+  min-height: 12.2rem;
+  border: 1px solid rgba(0, 110, 88, 0.18);
+  border-radius: 1.15rem;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(0, 110, 88, 0.13), transparent 18%),
+    radial-gradient(circle at 78% 36%, rgba(232, 74, 138, 0.11), transparent 18%),
+    radial-gradient(circle at 55% 78%, rgba(37, 99, 235, 0.10), transparent 18%),
+    linear-gradient(135deg, #ffffff 0%, #f4fbf8 100%);
+  overflow: hidden;
+}
+
+.renku-network::before {
+  content: '';
+  position: absolute;
+  inset: 1.4rem;
+  background:
+    linear-gradient(28deg, transparent 17%, var(--renku-line) 17.3%, var(--renku-line) 18%, transparent 18.3%),
+    linear-gradient(143deg, transparent 30%, var(--renku-line) 30.3%, var(--renku-line) 31%, transparent 31.3%),
+    linear-gradient(98deg, transparent 47%, rgba(37, 99, 235, 0.28) 47.3%, rgba(37, 99, 235, 0.28) 48%, transparent 48.3%);
+}
+
+.renku-node {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 4.1rem;
+  height: 4.1rem;
+  border-radius: 50%;
+  background: white;
+  border: 0.28rem solid var(--renku-green);
+  color: var(--renku-navy);
+  font-size: 0.66rem;
+  font-weight: 750;
+  text-align: center;
+  line-height: 1.05;
+  box-shadow: 0 0.4rem 1.1rem rgba(1, 25, 45, 0.12);
+}
+
+.renku-node.data { left: 10%; top: 18%; border-color: var(--renku-green); }
+.renku-node.code { right: 16%; top: 20%; border-color: var(--renku-blue); }
+.renku-node.compute { left: 26%; bottom: 14%; border-color: var(--renku-orange); }
+.renku-node.people { right: 25%; bottom: 14%; border-color: var(--renku-pink); }
+.renku-node.session { left: 44%; top: 38%; border-color: var(--sdsc-primary, #5561A6); }
+
+.renku-callout {
+  border-left: 0.28rem solid var(--renku-green);
+  background: var(--renku-mint);
+  color: var(--renku-navy);
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.renku-logo-inline {
+  display: inline-block;
+  height: 2.1rem;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 0.55rem;
+}
+
+.renku-logo-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(0, 110, 88, 0.22);
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 0.35rem 1rem rgba(1, 25, 45, 0.08);
+}
+
+.renku-logo-card img {
+  height: 2.4rem;
+  width: auto;
+}
+
+.renku-logo-card span {
+  color: var(--renku-navy);
+  font-weight: 650;
+}
+
+.renku-co-brand {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--sdsc-text-on-dark-muted, #C2C5E0);
+  font-size: 0.95rem;
+}
+
+.renku-co-brand img {
+  height: 2rem;
+  width: auto;
+  background: rgba(255,255,255,0.92);
+  border-radius: 0.45rem;
+  padding: 0.18rem 0.35rem;
+}
+
+/* Simplified Renku co-brand lockup: transparent logo, no backing plate. */
+.renku-co-brand {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--sdsc-text-on-dark-muted, #C2C5E0);
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.renku-co-brand img {
+  height: 1.8rem;
+  width: auto;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+.renku-co-brand-light {
+  color: var(--renku-navy);
+}
+
+/* Contrast-safe logo placement: the full-colour transparent Renku logo is used
+   on light/content backgrounds only. It is hidden in dark mode instead of being
+   recoloured or placed on a backing plate. */
+.sdsc-footer-logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.sdsc-footer-logo-separator {
+  width: 1px;
+  height: 1.05rem;
+  background: rgba(132, 132, 132, 0.45);
+}
+
+.sdsc-footer img.renku-footer-logo {
+  height: 1.05rem;
+  width: auto;
+}
+
+html.dark .sdsc-footer .renku-footer-logo,
+html.dark .sdsc-footer .sdsc-footer-logo-separator {
+  display: none;
+}
+
+/* Footer co-brand lockup: SDSC + Renku side-by-side at the same visual height. */
+.sdsc-footer-logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sdsc-footer img.footer-logo,
+.sdsc-footer img.renku-footer-logo {
+  height: 1rem;
+  width: auto;
+  max-width: none;
+}
+
+.sdsc-footer-logo-separator {
+  display: none;
+}
+
+/* Show Renku in the footer on all content slides, including dark mode. */
+html.dark .sdsc-footer .renku-footer-logo,
+.sdsc-footer .renku-footer-logo {
+  display: inline-block !important;
+  height: 1rem;
+  width: auto;
+}
+
+/* Final footer logo override: show SDSC and Renku side-by-side, equal height. */
+.sdsc-footer .sdsc-footer-logo-lockup {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+.sdsc-footer img.footer-logo {
+  display: inline-block !important;
+  height: 1rem !important;
+  width: auto !important;
+  max-width: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html.dark .sdsc-footer img.sdsc-logo-light { display: none !important; }
+html:not(.dark) .sdsc-footer img.sdsc-logo-dark { display: none !important; }
+html.dark .sdsc-footer img.renku-footer-logo,
+html:not(.dark) .sdsc-footer img.renku-footer-logo {
+  display: inline-block !important;
+}
+
+/* Final co-brand visibility fixes -------------------------------------------------
+   Keep the Renku logo visible in the persistent footer and make the section-slide
+   "Powered by Renku" lockup contrast-safe. These deliberately come last. */
+.sdsc-footer .sdsc-footer-logo-lockup {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.9rem !important;
+}
+.sdsc-footer img.footer-logo {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.sdsc-footer img.sdsc-logo-light,
+.sdsc-footer img.sdsc-logo-dark {
+  height: 1rem !important;
+}
+.sdsc-footer img.renku-footer-logo {
+  display: inline-block !important;
+  /* Match the visible Renku wordmark text to the SDSC wordmark height.
+     The frog/icon is taller than the Renku text, so the full SVG needs to be
+     scaled up; the frog will intentionally sit taller than the SDSC letters. */
+  height: 1.85rem !important;
+  min-width: 4.5rem !important;
+  transform: translateY(-0.12rem);
+}
+html.dark .sdsc-footer img.sdsc-logo-light { display: none !important; }
+html:not(.dark) .sdsc-footer img.sdsc-logo-dark { display: none !important; }
+html.dark .sdsc-footer img.renku-footer-logo,
+html:not(.dark) .sdsc-footer img.renku-footer-logo {
+  display: inline-block !important;
+}
+
+.slidev-layout.section .renku-co-brand-light {
+  width: fit-content;
+  margin-top: 1.25rem;
+  padding: 0.48rem 0.75rem;
+  border: 1px solid rgba(0, 110, 88, 0.24);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--renku-navy) !important;
+  box-shadow: 0 0.25rem 0.8rem rgba(1, 25, 45, 0.08);
+}
+.slidev-layout.section .renku-co-brand-light span {
+  color: var(--renku-navy) !important;
+}
+.slidev-layout.section .renku-co-brand-light img {
+  height: 1.45rem;
+  background: transparent;
+}
