@@ -2,8 +2,11 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 
-# Local agent/config files
-.pi/
+# Local agent/config files; keep project Pi settings that declare external skills
+.pi/*
+!.pi/
+!.pi/settings.json
+.agents/
 
 # Virtual environments
 .venv/
@@ -14,6 +17,12 @@ venv/
 models/
 data/
 
+# Python packaging
 *.egg-info/
+
+# Node/Slidev build artifacts
+node_modules/
+slides/**/node_modules/
+slides/**/dist/
 
 .cache
