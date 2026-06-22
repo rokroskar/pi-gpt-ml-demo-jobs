@@ -44,7 +44,18 @@ if retrain:
         else:
             status.update(label="Training complete", state="complete")
 
-checkpoint = find_best_checkpoint(model_read_dir) or find_best_checkpoint(model_write_dir)
+checkpoints = [p for p in [find_best_checkpoint(model_read_dir), find_best_checkpoint(model_write_dir)] if p is not None]
+checkpoint = None
+if checkpoints:
+    def _checkpoint_accuracy(path: Path) -> float:
+        try:
+            payload = torch.load(path, map_location="cpu")
+            return float(payload.get("metrics", {}).get("accuracy", -1.0))
+        except Exception:
+            return -1.0
+
+    checkpoint = max(checkpoints, key=_checkpoint_accuracy)
+
 if checkpoint is None:
     st.warning("No trained model found. Use the sidebar button to train one from the mounted Zenodo connector.")
     st.stop()

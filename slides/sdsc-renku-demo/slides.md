@@ -14,11 +14,7 @@ fonts:
 
 # Pi + LLMs for Renku Experimentation
 
-Agent-assisted project bootstrapping
-
-<span class="renku-slogan">Connecting data, code, compute, and people.</span>
-
-<div class="renku-co-brand"><span>Powered by Renku</span></div>
+<div class="renku-slogan"><span>Powered by Renku</span></div>
 
 <div class="sdsc-meta">Rok Roškar + Pi coding agent · 2026-06-18 · Renku MNIST jobs demo</div>
 
@@ -28,7 +24,7 @@ layout: section
 
 <div class="sdsc-section-num">01</div>
 
-# The idea
+# The Question
 
 Can an LLM agent help users get started with Renku faster?
 
@@ -59,19 +55,11 @@ Renku context from MCP tools
 Configured project
    ↓
 Launchable jobs and apps
+   ↓
+Logs and errors feed the next iteration
 ```
 
-<div class="sdsc-takeaway">The agent acts as a guide through Renku concepts and configuration choices.</div>
-
----
-
-# Initial prompt
-
-> Create an example project on Renku that demonstrates how to run non-interactive ML training jobs.
->
-> Use MNIST from Zenodo, train until accuracy is above 99%, and add a dashboard.
-
-<div class="sdsc-takeaway">The user gives intent; the agent works out the Renku resources and configuration steps.</div>
+<div class="sdsc-takeaway">The agent acts as a guide through Renku concepts and configuration choices, then iterates on jobs and dashboards by inspecting logs.</div>
 
 ---
 layout: two-cols-header
@@ -105,23 +93,18 @@ layout: section
 
 The agent does not need to click through the UI. It interacts with Renku through typed tools and platform context.
 
-<div class="renku-co-brand renku-co-brand-light"><span>Powered by Renku</span><img :src="'/renku-logo.svg'" alt="Renku" /></div>
-
 ---
 
-# What MCP gives the agent
+# What is MCP?
 
-MCP exposes Renku as an actionable API surface:
+MCP — the Model Context Protocol — is a standard way to connect LLM agents to external tools and context.
 
-- create projects and connect repositories
-- attach Zenodo DOI data connectors
-- configure Polybox / SWITCHdrive storage
-- create launchers for jobs and apps
-- inspect builds, sessions, logs, and status
+- tools expose typed actions the agent can call
+- context explains how and when to use them
+- authentication and permissions remain with the underlying service
+- the agent can act without scraping UIs or inventing API calls
 
-<div class="sdsc-takeaway">The LLM is not guessing generic cloud commands — it is using Renku-specific tools and semantics.</div>
-
-<div class="sdsc-takeaway">Roadmap: live Renku deployments, including renkulab.io, will soon expose an MCP endpoint for agents.</div>
+<div class="sdsc-takeaway">For Renku, MCP turns platform operations into structured capabilities an agent can reason about.</div>
 
 ---
 
@@ -134,7 +117,7 @@ The Renku MCP server packages platform knowledge into tools the agent can safely
 - OAuth handling: agents authenticate through the same Renku identity model as users
 - API alignment: developed and tested against Renku APIs to avoid schema and behavior drift
 
-<div class="sdsc-takeaway">Unlike a user-space skill or prompt file, a server-side MCP can be maintained by the platform team and updated as Renku evolves.</div>
+<div class="sdsc-takeaway">Unlike a user-space skill or prompt file, a server-side MCP can be maintained by the platform team and updated as Renku evolves. <br>We expect live deployments such as <strong>renkulab.io</strong> to expose an MCP endpoint in the near future.</div>
 
 ---
 
@@ -142,12 +125,12 @@ The Renku MCP server packages platform knowledge into tools the agent can safely
 
 The agent can encode details that are easy to miss:
 
-- which connector type to use for data vs artifacts
+- which connector type to use when
 - when to wait for a build before launching
 - how to distinguish jobs, sessions, and apps
-- how Streamlit must handle Renku base paths
+- how frontends must handle Renku session base paths
 
-<div class="sdsc-takeaway">This is where an agent can reduce the configuration burden for users who are still learning Renku.</div>
+<div class="sdsc-takeaway">This is where an agent can reduce the configuration burden for new users.</div>
 
 ---
 
@@ -175,9 +158,19 @@ layout: section
 
 # Demo project
 
-A small MNIST workflow demonstrates the pattern without making the ML problem the focus.
+A small MNIST workflow to demonstrate the pattern.
 
-<div class="sdsc-takeaway">Live project: <a href="https://renku-ci-ui-4216.dev.renku.ch/p/rokroskar/mnist-non-interactive-ml-jobs-demo">renku-ci-ui-4216.dev.renku.ch/p/rokroskar/mnist-non-interactive-ml-jobs-demo</a></div>
+<div class="sdsc-takeaway"><a href="https://renku-ci-ui-4216.dev.renku.ch/p/rokroskar/mnist-non-interactive-ml-jobs-demo">Live project</a></div>
+
+---
+
+# Initial prompt
+
+> Create an example project on Renku that demonstrates how to run non-interactive ML training jobs.
+>
+> Use MNIST from Zenodo, train until accuracy is above 99%, and add a dashboard.
+
+<div class="sdsc-takeaway">The user gives intent; the agent works out the Renku resources and configuration steps.</div>
 
 ---
 
@@ -248,8 +241,8 @@ layout: cover
 <div class="sdsc-contact">
   <div>Rok Roškar</div>
   <div>Swiss Data Science Center</div>
-  <div>datascience.ch</div>
-  <div>renkulab.io</div>
+  <div><a href="https://datascience.ch">datascience.ch</a></div>
+  <div><a href="https://renkulab.io">renkulab.io</a></div>
 </div>
 
 <div class="sdsc-partners">

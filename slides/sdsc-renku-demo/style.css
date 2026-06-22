@@ -566,3 +566,14 @@ html:not(.dark) .sdsc-footer img.renku-footer-logo {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+
+/* Closing slide links should be visibly clickable on the dark cover gradient. */
+.slidev-layout.cover .sdsc-contact a,
+.slidev-layout.intro .sdsc-contact a {
+  color: var(--sdsc-text-on-dark);
+  text-decoration: none;
+}
+.slidev-layout.cover .sdsc-contact a:hover,
+.slidev-layout.intro .sdsc-contact a:hover {
+  color: var(--sdsc-primary-light);
+}
