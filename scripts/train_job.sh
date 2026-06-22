@@ -14,3 +14,13 @@ python -m mnist_jobs.train \
   --data-dir "${MNIST_DATA_DIR:-/home/renku/work/mnist-dataset-doi-10.5281-zenodo.10058130}" \
   --model-dir "${MODEL_DIR:-/home/renku/work/models}" \
   --target-accuracy "${TARGET_ACCURACY:-0.99}"
+
+# Give the cloud-storage mount time to flush model artifacts before the job pod
+# terminates. This is especially important for Polybox/SWITCHdrive-backed
+# connectors: the training process can finish before the sidecar/backend has
+# made the new checkpoint visible to other sessions, such as the dashboard.
+SYNC_DELAY_SECONDS="${MODEL_SYNC_DELAY_SECONDS:-60}"
+echo "Training finished; flushing filesystem and waiting ${SYNC_DELAY_SECONDS}s for model storage sync..."
+sync || true
+sleep "${SYNC_DELAY_SECONDS}"
+echo "Model storage sync grace period complete."
