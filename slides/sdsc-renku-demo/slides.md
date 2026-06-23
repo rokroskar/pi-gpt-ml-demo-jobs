@@ -26,7 +26,9 @@ layout: section
 
 # The Question
 
-Can an LLM agent help users get started with Renku faster?
+Can an LLM agent help users get started with Renku faster?*
+
+<div class="slide-footnote">* Thanks to Christian for the initial idea.</div>
 
 ---
 
@@ -48,13 +50,13 @@ Renku gives users a lot of power:
 ```text
 User intent or existing repository
    ↓
-Pi + LLM agent
+Pi agent / Claude / Codex
    ↓
 Renku context from MCP tools
    ↓
 Configured project
    ↓
-Launchable jobs and apps
+Launchable sessions, jobs, and apps
    ↓
 Logs and errors feed the next iteration
 ```
@@ -156,11 +158,9 @@ layout: section
 
 <div class="sdsc-section-num">03</div>
 
-# Demo project
+# Two demo paths
 
-A small MNIST workflow to demonstrate the pattern.
-
-<div class="sdsc-takeaway"><a href="https://renku-ci-ui-4216.dev.renku.ch/p/rokroskar/mnist-non-interactive-ml-jobs-demo">Live project</a></div>
+The same agent-assisted workflow supports both generated code and existing repositories.
 
 ---
 
@@ -188,6 +188,26 @@ The agent bootstrapped a Renku project with:
 
 ---
 
+# Existing repo: air quality analysis
+
+The second example starts from an existing analysis repository.
+
+<div class="prompt-card compact">
+  <div class="prompt-card-label">Simplified prompt</div>
+  <div>Make me a Renku project from this repository and add the appropriate data connectors.</div>
+</div>
+
+<div class="sdsc-takeaway">The user gave a repository URL and a basic instruction. The agent inspected the repo, inferred the required data sources, created the project, linked the connectors, and added a notebook launcher.</div>
+
+<div class="sdsc-takeaway"><a href="https://renku-ci-ui-4216.dev.renku.ch/p/rokroskar/air-quality-analysis-demo">Live project: air-quality-analysis-demo</a></div>
+
+- Started with only Zürich data (from Polybox)
+- Prompted the agent to expand to other European cities via datasets on Zenodo
+- Found London, Berlin, and regional Europe data from Zenodo, added as DOI connectors
+- Session launcher with image built from code
+
+---
+
 # The slides are part of the experiment
 
 This deck was also created through the same agent-assisted process.
@@ -197,7 +217,9 @@ This deck was also created through the same agent-assisted process.
   <div>Create a concise SDSC/Renku-branded presentation explaining the Pi + LLM + Renku demo workflow, focused on high-level concepts rather than implementation details.</div>
 </div>
 
-<div class="sdsc-takeaway">The experiment produced not only a Renku project, but also the communication material around it.</div>
+The agent reviewed session traces from the project-creation work, including the separate agent session that developed and refined the Renku MCP server.
+
+<div class="sdsc-takeaway">The experiment produced not only Renku projects, but also the communication material around them.</div>
 
 ---
 layout: section
@@ -229,6 +251,20 @@ The interesting part is not MNIST — it is guided project onboarding.
 > It is an execution assistant that helps turn intent into reproducible platform actions.
 
 For Renku, that means connectors, environments, launchers, jobs, apps, and documentation — configured with the user in the loop.
+
+---
+
+# Side note: useful for users and platform devs
+
+The same agent + MCP loop can help platform teams too:
+
+- test new APIs with realistic workflows
+- automate exploratory testing of new features
+- discover confusing configuration or error states
+- surface gaps in docs, schemas, and tool guidance
+- support design by observing where agents and users struggle
+
+<div class="sdsc-takeaway">Agent failures are signals: they often reveal platform usability issues before users hit them at scale.</div>
 
 ---
 layout: cover
